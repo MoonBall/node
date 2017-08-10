@@ -659,7 +659,7 @@ not be emitted.
 added: v5.5.0
 -->
 
-* `request` {http.ClientRequest}
+* `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
 Emitted each time a request with an HTTP `Expect` header is received, where the
@@ -1231,8 +1231,8 @@ Example:
 ```js
 const http = require('http');
 const server = http.createServer((req, res) => {
-  const ip = req.socket.remoteAddress;
-  const port = req.socket.remotePort;
+  const ip = res.socket.remoteAddress;
+  const port = res.socket.remotePort;
   res.end(`Your IP address is ${ip} and your source port is ${port}.`);
 }).listen(3000);
 ```
